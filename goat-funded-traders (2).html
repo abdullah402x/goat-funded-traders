@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Goat Funded Traders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Urbanist',sans-serif;background:#000;color:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* PROMO BAR */
+.promo-bar{background:#fff;color:#000;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;padding:9px 20px;font-size:13px;font-weight:500}
+.promo-item{display:flex;align-items:center;gap:10px}
+.promo-highlight{font-weight:800}
+.promo-code-btn{display:inline-flex;align-items:center;gap:6px;background:#000;color:#fff;border:none;border-radius:6px;padding:4px 14px;font-size:12px;font-weight:700;letter-spacing:0.06em;cursor:pointer;font-family:'Urbanist',sans-serif;transition:opacity .2s}
+.promo-code-btn:hover{opacity:.8}
+.promo-sep{width:1px;height:20px;background:#ddd}
+
+/* FOREX/FUTURES TABS */
+.mode-tabs{display:flex;align-items:center;justify-content:center;border-bottom:1px solid #111;background:#000;padding:0 20px}
+.mode-tab{padding:10px 22px;font-size:14px;font-weight:500;color:#666;text-decoration:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.mode-tab.active{color:#fff;border-bottom-color:#fff}
+.mode-tab:hover{color:#ccc}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:#000;border-bottom:1px solid #111;display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:68px}
+.nav-logo img{height:36px;display:block}
+.nav-center{display:flex;align-items:center;gap:4px}
+.nav-btn{background:none;border:none;color:#ccc;font-family:'Urbanist',sans-serif;font-size:14px;font-weight:500;padding:8px 14px;border-radius:6px;cursor:pointer;transition:color .2s,background .2s}
+.nav-btn:hover,.nav-link:hover{color:#fff;background:#111}
+.nav-link{color:#ccc;text-decoration:none;font-size:14px;font-weight:500;padding:8px 14px;border-radius:6px;transition:color .2s,background .2s}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-lang{display:flex;align-items:center;gap:6px;background:none;border:1px solid #222;color:#ccc;font-family:'Urbanist',sans-serif;font-size:13px;padding:6px 12px;border-radius:6px;cursor:pointer;transition:border-color .2s}
+.nav-lang img{width:18px;height:12px;object-fit:cover;border-radius:2px}
+.btn-login{background:none;border:1px solid #333;color:#fff;font-family:'Urbanist',sans-serif;font-size:14px;font-weight:500;padding:8px 20px;border-radius:8px;cursor:pointer;text-decoration:none;transition:border-color .2s}
+.btn-login:hover{border-color:#666}
+.btn-get-funded{background:#fff;color:#000;border:none;font-family:'Urbanist',sans-serif;font-size:14px;font-weight:700;padding:8px 20px;border-radius:8px;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .15s}
+.btn-get-funded:hover{opacity:.88;transform:translateY(-1px)}
+
+/* HERO */
+.hero{text-align:center;padding:90px 20px 70px;position:relative;overflow:hidden}
+.hero-stars-row{display:flex;align-items:center;justify-content:center;gap:3px;margin-bottom:28px}
+.hero-stars-row svg,.review-stars-row svg,.stars-row svg{width:20px;height:20px}
+.star-path{fill:#FFD700}
+.hero h1{font-size:clamp(52px,9vw,108px);font-weight:800;line-height:1.0;letter-spacing:-0.02em;text-transform:uppercase;color:#fff;margin-bottom:0}
+.hero h1 em{font-style:italic;font-weight:300}
+.hero-price-line{font-size:clamp(28px,5vw,52px);font-weight:300;color:#fff;margin-bottom:32px;letter-spacing:-0.01em;text-transform:lowercase}
+.hero-price-line strong{font-weight:800}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px}
+.btn-claim{display:inline-block;background:#fff;color:#000;padding:16px 44px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:opacity .2s,transform .15s}
+.btn-claim:hover{opacity:.88;transform:translateY(-2px)}
+.hero-limited{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:0.1em}
+.hero-tagline{font-size:16px;color:#666;margin-top:16px;font-weight:400}
+
+/* SIM SECTION */
+.sim-section{padding:60px 20px 80px;text-align:center}
+.sim-section h2{font-size:clamp(28px,5vw,52px);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:48px;line-height:1.1}
+.sim-section h2 em{font-style:italic;font-weight:300}
+.sim-cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.sim-card{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:16px;width:300px;overflow:hidden}
+.sim-card img{width:100%;display:block}
+.sim-try{font-size:15px;color:#777;margin-bottom:20px}
+.sim-try strong{color:#fff}
+.btn-get-funded-2{display:inline-block;background:#fff;color:#000;padding:13px 36px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+.btn-get-funded-2:hover{opacity:.88}
+
+/* TRUSTED */
+.trusted-section{text-align:center;padding:64px 20px;border-top:1px solid #111;border-bottom:1px solid #111}
+.trusted-section h2{font-size:clamp(28px,5vw,52px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em}
+.trusted-section h2 em{font-style:italic;font-weight:300}
+
+/* ACCOUNT TABLE */
+.account-section{max-width:680px;margin:0 auto;padding:0 20px 80px}
+.account-header{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:16px 16px 0 0;padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.account-title-wrap{display:flex;align-items:center;gap:12px}
+.account-icon{width:40px;height:40px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.account-title{font-size:18px;font-weight:700;letter-spacing:-0.01em}
+.account-info-btn{width:28px;height:28px;background:#1a1a1a;border:none;border-radius:50%;cursor:pointer;color:#666;font-size:14px;display:flex;align-items:center;justify-content:center}
+.account-rows{background:#0a0a0a;border:1px solid #1e1e1e;border-top:none}
+.account-row{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid #141414}
+.account-row:last-child{border-bottom:none}
+.row-left{display:flex;align-items:center;gap:12px;color:#888;font-size:14px}
+.row-left img{width:20px;height:20px;opacity:0.6;filter:invert(1)}
+.row-right{font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px}
+.check-green{color:#22c55e;font-size:18px}
+
+/* PRICING */
+.pricing-card{background:#0a0a0a;border:1px solid #1e1e1e;border-top:none;border-radius:0 0 20px 20px;overflow:hidden}
+.pricing-top{padding:28px 32px 24px;border-bottom:1px solid #1a1a1a;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.price-left .price-old{font-size:15px;color:#555;text-decoration:line-through;margin-bottom:4px}
+.price-left .price-main{font-size:72px;font-weight:900;line-height:1;letter-spacing:-0.04em;color:#fff}
+.price-label{font-size:14px;color:#666;margin-top:4px}
+.price-right{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.price-account{display:flex;align-items:center;gap:10px}
+.arrow-btn{width:32px;height:32px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff}
+.account-name-badge{font-size:13px;font-weight:600;color:#fff;white-space:nowrap}
+.btn-start-challenge{display:block;background:#fff;color:#000;border:none;font-family:'Urbanist',sans-serif;font-size:15px;font-weight:800;padding:14px 28px;text-align:center;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;text-decoration:none;border-radius:10px;white-space:nowrap}
+.btn-start-challenge:hover{opacity:.88}
+.pricing-crypto{display:flex;justify-content:center;gap:14px;padding:20px 32px 24px;flex-wrap:wrap;border-top:1px solid #141414}
+.pricing-crypto img{height:24px;opacity:.6;filter:invert(1) brightness(0.7);transition:opacity .2s}
+.pricing-crypto img:hover{opacity:1}
+
+/* FUTURE */
+.future-section{text-align:center;padding:80px 20px 60px;border-top:1px solid #111}
+.future-section h2{font-size:clamp(28px,5vw,52px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:12px}
+.future-section h2 em{font-style:italic;font-weight:300}
+.future-sub{font-size:16px;color:#666;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-claim-2{display:inline-block;background:#fff;color:#000;padding:15px 40px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:opacity .2s}
+.btn-claim-2:hover{opacity:.88}
+
+/* REVIEWS */
+.reviews-section{padding:80px 20px}
+.reviews-header{text-align:center;margin-bottom:48px}
+.reviews-header .stars-row{display:flex;justify-content:center;gap:3px;margin-bottom:10px}
+.reviews-header .rating-line{font-size:13px;color:#666;margin-bottom:20px}
+.reviews-header h2{font-size:clamp(26px,4vw,44px);font-weight:800;text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:6px}
+.reviews-header h2 em{font-style:italic;font-weight:300}
+.reviews-header p{font-size:14px;color:#666}
+.reviews-track{display:flex;gap:16px;overflow-x:auto;max-width:1100px;margin:0 auto;padding-bottom:8px;scrollbar-width:none}
+.reviews-track::-webkit-scrollbar{display:none}
+.review-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:14px;padding:24px;min-width:320px;max-width:360px;flex-shrink:0}
+.review-divider{border:none;border-top:1px solid #1a1a1a;margin-bottom:20px}
+.review-stars-row{display:flex;gap:2px;margin-bottom:14px}
+.review-text{font-size:14px;color:#999;line-height:1.75;margin-bottom:18px}
+.review-author-row{display:flex;align-items:center;justify-content:space-between}
+.review-author{font-size:14px;font-weight:600;color:#fff}
+.review-flag img{width:28px;border-radius:3px}
+
+/* COMMUNITY */
+.community-section{text-align:center;padding:72px 20px;background:#080808;border-top:1px solid #111;border-bottom:1px solid #111}
+.community-section h2{font-size:clamp(24px,4vw,40px);font-weight:800;letter-spacing:-0.02em;margin-bottom:20px;text-transform:uppercase}
+.community-section h2 em{font-style:italic;font-weight:300}
+.btn-discord{display:inline-flex;align-items:center;gap:10px;background:#5865F2;color:#fff;padding:13px 30px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:0.04em;transition:opacity .2s;margin-bottom:40px}
+.btn-discord:hover{opacity:.88}
+.newsletter-wrap{max-width:380px;margin:0 auto}
+.newsletter-wrap p{font-size:13px;color:#555;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px}
+.newsletter-form{display:flex;gap:8px}
+.newsletter-form input{flex:1;background:#111;border:1px solid #2a2a2a;color:#fff;padding:11px 16px;border-radius:8px;font-size:13px;font-family:'Urbanist',sans-serif;outline:none;transition:border-color .2s}
+.newsletter-form input:focus{border-color:#444}
+.newsletter-form input::placeholder{color:#444}
+.newsletter-form button{background:#fff;color:#000;border:none;font-family:'Urbanist',sans-serif;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;cursor:pointer;transition:opacity .2s}
+.newsletter-form button:hover{opacity:.88}
+
+/* FOOTER */
+footer{background:#000;border-top:1px solid #0f0f0f;padding:56px 48px 0}
+.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.footer-logo img{height:34px}
+.footer-lang-btn{display:flex;align-items:center;gap:6px;background:none;border:1px solid #1a1a1a;color:#555;font-family:'Urbanist',sans-serif;font-size:12px;padding:5px 12px;border-radius:6px;cursor:pointer}
+.footer-lang-btn img{width:16px;border-radius:2px}
+.footer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:32px;margin-bottom:40px;border-top:1px solid #111;padding-top:40px}
+.footer-col-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:#555;text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-pay-col{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.footer-pay-col img{height:16px;opacity:.35;filter:invert(1);transition:opacity .2s;object-fit:contain;width:auto;max-width:80px}
+.footer-pay-col img:hover{opacity:.65}
+.footer-bottom{border-top:1px solid #0f0f0f;padding:20px 0 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:12px;color:#333}
+.disclaimer-text{font-size:11px;color:#2a2a2a;line-height:1.8;padding:32px 0 40px;border-top:1px solid #0a0a0a}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:#0a0a0a;border:1px solid #222;border-radius:20px;width:100%;max-width:520px;overflow:visible;animation:modalIn .25s ease;margin:auto}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-header{padding:24px 28px 20px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:18px;font-weight:800;letter-spacing:-0.01em}
+.modal-close{background:none;border:none;color:#666;font-size:22px;cursor:pointer;line-height:1;padding:0;transition:color .2s}
+.modal-close:hover{color:#fff}
+.modal-body{padding:24px 28px}
+
+/* STEP INDICATORS */
+.steps{display:flex;align-items:center;gap:0;margin-bottom:28px}
+.step{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#444}
+.step.active{color:#fff}
+.step.done{color:#22c55e}
+.step-num{width:24px;height:24px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.step.done .step-num{background:#22c55e;border-color:#22c55e;color:#000}
+.step.active .step-num{background:#fff;border-color:#fff;color:#000}
+.step-line{flex:1;height:1px;background:#1a1a1a;margin:0 8px}
+
+/* PAYMENT SECTION */
+.pay-section{display:none}
+.pay-section.active{display:block}
+
+.crypto-box{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:16px}
+.crypto-label{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.crypto-amount{font-size:32px;font-weight:900;letter-spacing:-0.02em;color:#fff;margin-bottom:4px}
+.crypto-network{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;color:#888;margin-bottom:20px}
+.network-dot{width:7px;height:7px;border-radius:50%;background:#E84142}
+
+.address-box{background:#000;border:1px solid #1e1e1e;border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.address-text{font-size:12px;color:#888;font-family:monospace;word-break:break-all;line-height:1.5}
+.copy-btn{background:#fff;color:#000;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Urbanist',sans-serif;transition:opacity .2s;flex-shrink:0}
+.copy-btn:hover{opacity:.85}
+.copy-btn.copied{background:#22c55e;color:#000}
+
+.qr-box{text-align:center;margin-bottom:16px}
+.qr-box img{width:140px;height:140px;border-radius:10px;border:4px solid #fff}
+
+.pay-warning{display:flex;gap:10px;background:#1a1000;border:1px solid #3a2500;border-radius:8px;padding:12px 14px;font-size:12px;color:#f59e0b;line-height:1.6;margin-bottom:20px}
+.pay-warning-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+
+/* FORM SECTION */
+.form-group{margin-bottom:16px}
+.form-label{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;display:block}
+.form-input{width:100%;background:#111;border:1px solid #2a2a2a;color:#fff;padding:12px 14px;border-radius:8px;font-size:14px;font-family:'Urbanist',sans-serif;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:#555}
+.form-input::placeholder{color:#444}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.btn-submit{width:100%;background:#fff;color:#000;border:none;font-family:'Urbanist',sans-serif;font-size:15px;font-weight:800;padding:15px;border-radius:10px;cursor:pointer;letter-spacing:0.04em;text-transform:uppercase;transition:opacity .2s,transform .15s;margin-top:4px}
+.btn-submit:hover{opacity:.88;transform:translateY(-1px)}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* SUCCESS */
+.success-screen{text-align:center;padding:20px 0}
+.success-icon{font-size:52px;margin-bottom:16px}
+.success-title{font-size:22px;font-weight:800;margin-bottom:8px}
+.success-sub{font-size:14px;color:#666;line-height:1.7;max-width:340px;margin:0 auto}
+
+@media(max-width:900px){
+  nav{padding:0 16px}
+  .nav-center{display:none}
+  footer{padding:40px 20px 0}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .promo-bar{gap:12px;font-size:12px}
+  .pricing-top{flex-direction:column}
+  .price-right{align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .modal-body{padding:20px}
+}
+.upload-box{background:#111;border:1.5px dashed #2a2a2a;border-radius:10px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s}
+.upload-box:hover{border-color:#555}
+.upload-icon{font-size:28px;margin-bottom:8px}
+.upload-text{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.upload-sub{font-size:12px;color:#555}
+.upload-preview{position:relative;margin-top:8px;border-radius:10px;overflow:hidden;border:1px solid #222}
+.upload-preview img{width:100%;max-height:200px;object-fit:cover;display:block}
+.remove-btn{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:'Urbanist',sans-serif}
+.remove-btn:hover{background:rgba(200,0,0,0.8)}
+select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+select.form-input option{background:#111;color:#fff}
+</style>
+</head>
+<body>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  <div class="promo-item">
+    <span>Limited Time</span>
+    <span class="promo-highlight">40% OFF + BOGO*</span>
+    <button class="promo-code-btn">CODE: BOGO40</button>
+  </div>
+  <div class="promo-sep"></div>
+  <div class="promo-item">
+    <span>50% OFF for New Customers</span>
+    <button class="promo-code-btn">CODE: FIRSTGFT</button>
+  </div>
+</div>
+
+<!-- FOREX/FUTURES TABS -->
+<div class="mode-tabs">
+  <a href="#" class="mode-tab active">Forex</a>
+  <a href="#" class="mode-tab">Futures</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/692e4dc2637f15bb6567ebea_Brand%20Nav%20Logo.webp"
+         alt="Goat Funded Traders"
+         onerror="this.style.display='none';this.parentElement.innerHTML='<span style=&quot;font-family:Urbanist,sans-serif;font-size:17px;font-weight:800;letter-spacing:0.04em;color:#fff&quot;>🐐 GOAT FUNDED TRADERS</span>'">
+  </a>
+  <div class="nav-center">
+    <button class="nav-btn">Trading ▾</button>
+    <a href="#" class="nav-link">How It Works</a>
+    <a href="#" class="nav-link">Rewards</a>
+    <a href="#" class="nav-link">Affiliate</a>
+    <button class="nav-btn">Company ▾</button>
+    <a href="#" class="nav-link">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-lang">
+      <img src="https://cdn.prod.website-files.com/6822f0d53a8cbf626143ccc2/6891f0897394dd666fb753ce_uk.svg" alt="EN"> EN ▾
+    </button>
+    <a href="#" class="btn-login">Log In</a>
+    <a href="#" class="btn-get-funded">Get Funded</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stars-row">
+    <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+  </div>
+  <h1>Get $1000 <em>Instant funded</em></h1>
+  <div class="hero-price-line">account for <strong>$5</strong></div>
+  <div class="hero-cta-wrap">
+    <button class="btn-claim" onclick="openModal()" style="border:none;cursor:pointer;">claim my account</button>
+    <span class="hero-limited">limited time only</span>
+  </div>
+  <p class="hero-tagline">start your goat journey for one dollar. trade like the greatest.</p>
+</section>
+
+<!-- SIMULATED CAPITAL -->
+<section class="sim-section">
+  <h2>simulated capital <em>real</em> Rewards</h2>
+  <div class="sim-cards">
+    <div class="sim-card"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16efeee_Card%20(13).svg" alt="Card 1"></div>
+    <div class="sim-card"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16efeed_Card%20(14).svg" alt="Card 2"></div>
+    <div class="sim-card"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16efeef_Card%20(15).svg" alt="Card 3"></div>
+  </div>
+  <p class="sim-try">Try it now for only <strong>$5</strong> and get $1000 Account.</p>
+  <a href="#account" class="btn-get-funded-2">get funded</a>
+</section>
+
+<!-- TRUSTED -->
+<section class="trusted-section">
+  <h2>trusted by <em>98,000+</em> Traders worldwide</h2>
+</section>
+
+<!-- ACCOUNT TABLE + PRICING -->
+<section class="account-section" id="account">
+  <div class="account-header">
+    <div class="account-title-wrap">
+      <div class="account-icon">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/699f435de5012774cfdc6c45_Time-Weekly-1--Streamline-Ultimate%20(1).svg" alt="icon" style="width:22px;filter:invert(1)">
+      </div>
+      <span class="account-title">Start goat account</span>
+    </div>
+    <button class="account-info-btn">
+      <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/699f435de5012774cfdc6c46_Info.svg" alt="info" style="width:16px;filter:invert(0.4)">
+    </button>
+  </div>
+  <div class="account-rows">
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5d_Target-Center-2--Streamline-Ultimate.svg" alt="">Target</div>
+      <div class="row-right">No minimum target</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff57_Graph-Stats-Descend--Streamline-Ultimate.svg" alt="">Daily Drawdown</div>
+      <div class="row-right">3%</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5c_Diagram-Fall-Fast-Dash--Streamline-Ultimate.svg" alt="">Maximum Drawdown</div>
+      <div class="row-right">6%</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5b_Calendar--Streamline-Ultimate.svg" alt="">Trading Period</div>
+      <div class="row-right">30 Days</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff59_Award-Ribbon-Star-1--Streamline-Ultimate.svg" alt="">Reward Schedule</div>
+      <div class="row-right">Rewards Bi-Weekly</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5a_Layout-Two-Colums-2--Streamline-Ultimate.svg" alt="">Profit Split</div>
+      <div class="row-right">80%</div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16efeea_Icon%20-%202025-02-16T160324.333.svg" alt="">News Trading</div>
+      <div class="row-right"><span class="check-green">✓</span></div>
+    </div>
+    <div class="account-row">
+      <div class="row-left"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16efeea_Icon%20-%202025-02-16T160324.333.svg" alt="">Weekend Holding</div>
+      <div class="row-right"><span class="check-green">✓</span></div>
+    </div>
+  </div>
+
+  <!-- PRICING CARD -->
+  <div class="pricing-card">
+    <div class="pricing-top">
+      <div class="price-left">
+        <div class="price-old">$25.00</div>
+        <div class="price-main">$5</div>
+        <div class="price-label">$1,000 funded account</div>
+      </div>
+      <div class="price-right">
+        <div class="price-account">
+          <button class="arrow-btn">
+            <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff64_arrow-left%20(4).svg" alt="←" style="width:14px;filter:invert(1)">
+          </button>
+          <span class="account-name-badge">$1,000 FUNDED Account</span>
+          <button class="arrow-btn">
+            <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff65_arrow-right%20(2).svg" alt="→" style="width:14px;filter:invert(1)">
+          </button>
+        </div>
+        <button class="btn-start-challenge" onclick="openModal()">Start Challenge</button>
+      </div>
+    </div>
+    <div class="pricing-crypto">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5e_Digital%20Currencies.svg" alt="">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff62_Digital%20Currencies%20(1).svg" alt="">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff63_Digital%20Currencies%20(2).svg" alt="">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff60_Digital%20Currencies%20(3).svg" alt="">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff61_Digital%20Currencies%20(4).svg" alt="">
+      <img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff5f_Digital%20Currencies%20(5).svg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE OF TRADING -->
+<section class="future-section">
+  <h2>The Future of Trading <em>is here</em></h2>
+  <p class="future-sub">Trade with our simulated capital and keep 100% of the profit<br>No challenge. No waiting. Instant Capital.</p>
+  <button class="btn-claim-2" onclick="openModal()" style="border:none;cursor:pointer;">Start Trading - Claim my Account</button>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-header">
+    <div class="stars-row">
+      <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <p class="rating-line">Rated 4.8/5 From 3.2K+ Verified reviews</p>
+    <h2>Traders love <em>goatfunded</em></h2>
+    <p>Join 98,000+ traders worldwide who trust goatfunded</p>
+  </div>
+  <div class="reviews-track">
+    <div class="review-card">
+      <hr class="review-divider">
+      <div class="review-stars-row">
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">The best prop firm to trade for the long term. What really fascinated me to join The GFT was the mouth-watering scaling program. Best scaling program I saw so far.. and that's the main purpose I started my journey here. Also that the CEO and the team are very supportive. I highly recommend GFT from the bottom of my heart.</p>
+      <div class="review-author-row">
+        <span class="review-author">aniket</span>
+        <div class="review-flag"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff6b_Flag-1.avif" alt="flag"></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <hr class="review-divider">
+      <div class="review-stars-row">
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">A game changer for traders. I've been trading for years, and this is by far the best experience I've had with a prop firm. The platform is stable, the support team is always available, and the profit split is one of the best in the industry.</p>
+      <div class="review-author-row">
+        <span class="review-author">marie</span>
+        <div class="review-flag"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff6c_Flag-2.avif" alt="flag"></div>
+      </div>
+    </div>
+    <div class="review-card">
+      <hr class="review-divider">
+      <div class="review-stars-row">
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path class="star-path" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">As a funded trader, GFT rewards consistency. I stuck to their risk rules, scaled my account and now keep 95% of my gains. Withdrew $5k last month. Loyalty pays off here.</p>
+      <div class="review-author-row">
+        <span class="review-author">gaspar</span>
+        <div class="review-flag"><img src="https://cdn.prod.website-files.com/67b3682cc0f1f956e16efe80/67b3682cc0f1f956e16eff6e_211-2111571_spain-flag-clip-art.avif" alt="flag"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community-section">
+  <h2>Level up. <em>Join our Community.</em></h2>
+  <br>
+  <a href="#" class="btn-discord">
+    <svg width="18" height="14" viewBox="0 0 71 55" fill="white"><path d="M60.1 4.9A58.6 58.6 0 0 0 45.5.4a.2.2 0 0 0-.2.1 40.8 40.8 0 0 0-1.8 3.7 54 54 0 0 0-16.2 0 37.4 37.4 0 0 0-1.8-3.7.2.2 0 0 0-.2-.1A58.4 58.4 0 0 0 10.8 4.9a.2.2 0 0 0-.1.1C1.6 18.1-.9 31 .3 43.7a.2.2 0 0 0 .1.2 58.9 58.9 0 0 0 17.7 9 .2.2 0 0 0 .3-.1 42.1 42.1 0 0 0 3.6-5.9.2.2 0 0 0-.1-.3 38.8 38.8 0 0 1-5.5-2.6.2.2 0 0 1 0-.4 43.5 43.5 0 0 0 1-.6.2.2 0 0 1 .2 0c11.5 5.3 24 5.3 35.4 0a.2.2 0 0 1 .2 0l1 .6a.2.2 0 0 1 0 .4 36.1 36.1 0 0 1-5.5 2.6.2.2 0 0 0-.1.3 47.3 47.3 0 0 0 3.6 5.9.2.2 0 0 0 .3.1 58.7 58.7 0 0 0 17.8-9 .2.2 0 0 0 .1-.2C73 29.1 69.5 16.3 60.2 5a.2.2 0 0 0-.1-.1z"/></svg>
+    Discord
+  </a>
+  <div class="newsletter-wrap">
+    <p>Exclusive Discounts &amp; Giveaways</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email">
+      <button type="button">Send</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Get Funded — $1,000 Account</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="steps">
+        <div class="step active" id="step-ind-1"><div class="step-num">1</div><span>Payment</span></div>
+        <div class="step-line"></div>
+        <div class="step" id="step-ind-2"><div class="step-num">2</div><span>Details</span></div>
+        <div class="step-line"></div>
+        <div class="step" id="step-ind-3"><div class="step-num">3</div><span>Done</span></div>
+      </div>
+
+      <!-- STEP 1: FULL DETAILS FORM -->
+      <div class="pay-section active" id="step1">
+        <div style="font-size:13px;color:#666;margin-bottom:20px;line-height:1.7">
+          Fill in your details below. You will be shown the payment address on the next step.
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input class="form-input" type="text" id="firstName" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input class="form-input" type="text" id="lastName" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input class="form-input" type="email" id="userEmail" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input class="form-input" type="tel" id="userPhone" placeholder="+1 234 567 8900">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date of Birth *</label>
+          <input class="form-input" type="date" id="userDob">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Country *</label>
+          <select class="form-input" id="userCountry">
+            <option value="">Select your country...</option>
+            <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Argentina</option><option>Australia</option><option>Austria</option><option>Azerbaijan</option><option>Bahrain</option><option>Bangladesh</option><option>Belgium</option><option>Brazil</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Egypt</option><option>Ethiopia</option><option>Finland</option><option>France</option><option>Germany</option><option>Ghana</option><option>Greece</option><option>Hungary</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kuwait</option><option>Lebanon</option><option>Libya</option><option>Malaysia</option><option>Mexico</option><option>Morocco</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palestine</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Singapore</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Sweden</option><option>Switzerland</option><option>Syria</option><option>Taiwan</option><option>Tanzania</option><option>Thailand</option><option>Tunisia</option><option>Turkey</option><option>UAE</option><option>Uganda</option><option>Ukraine</option><option>United Kingdom</option><option>United States</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zimbabwe</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">City *</label>
+          <input class="form-input" type="text" id="userCity" placeholder="New York">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Home Address *</label>
+          <input class="form-input" type="text" id="userAddress" placeholder="123 Main Street, Apt 4B">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Zip / Postal Code *</label>
+          <input class="form-input" type="text" id="userZip" placeholder="10001">
+        </div>
+        <button class="btn-submit" id="nextBtn" onclick="goToStep2()">Continue to Payment →</button>
+        <div style="text-align:center;font-size:12px;color:#444;margin-top:10px">Your information is secure and private</div>
+      </div>
+
+      <!-- STEP 2: PAYMENT + SCREENSHOT -->
+      <div class="pay-section" id="step2">
+        <div class="crypto-box">
+          <div class="crypto-label">Amount to send</div>
+          <div class="crypto-amount">5 USDT</div>
+          <div class="crypto-network"><span class="network-dot"></span>TRC20 Network (Tron) — Low Fees</div>
+          <div class="crypto-label" style="margin-top:16px">Send USDT to this address</div>
+          <div class="address-box">
+            <span class="address-text">TGyZMzFjBZJkem6QFUeC5GiAaUgJnzcgN8</span>
+            <button class="copy-btn" id="copyBtn" onclick="copyAddress()">Copy</button>
+          </div>
+          <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=TGyZMzFjBZJkem6QFUeC5GiAaUgJnzcgN8&bgcolor=ffffff&color=000000&margin=8" alt="QR Code">
+            <div style="font-size:11px;color:#555;margin-top:6px">Scan to pay</div>
+          </div>
+        </div>
+        <div class="pay-warning">
+          <span class="pay-warning-icon">⚠</span>
+          <span>Only use <strong>TRC20 (Tron) network</strong>. Using any other network may result in permanent loss of funds. Send exactly <strong>5 USDT</strong>.</span>
+        </div>
+
+        <div class="form-group" style="margin-top:8px">
+          <label class="form-label">Transaction ID *</label>
+          <input class="form-input" type="text" id="txHash" placeholder="Copy from your wallet / exchange">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Payment Screenshot *</label>
+          <div class="upload-box" id="uploadBox" onclick="document.getElementById('screenshotFile').click()">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">Click to upload payment screenshot</div>
+            <div class="upload-sub">PNG, JPG, JPEG — Max 10MB</div>
+            <input type="file" id="screenshotFile" accept="image/*" style="display:none" onchange="handleFile(this)">
+          </div>
+          <div class="upload-preview" id="uploadPreview" style="display:none">
+            <img id="previewImg" src="" alt="Screenshot preview">
+            <button class="remove-btn" onclick="removeFile()">✕ Remove</button>
+          </div>
+        </div>
+
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">Submit & Activate My Account 🚀</button>
+        <div style="text-align:center;font-size:12px;color:#444;margin-top:10px">We will verify and activate your account within 24 hours</div>
+      </div>
+
+      <!-- STEP 3: SUCCESS -->
+      <div class="pay-section" id="step3">
+        <div class="success-screen">
+          <div class="success-icon">🎉</div>
+          <div class="success-title">Thank You! Form Submitted</div>
+          <p class="success-sub">Your details and payment have been submitted. We will verify your transaction and activate your <strong style="color:#fff">$1,000 funded account</strong> within <strong style="color:#fff">24 hours</strong>.<br><br>Please also send your payment screenshot directly to our number for faster verification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = '923186917608';
+let screenshotDataUrl = '';
+
+function openModal(){
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('payModal').addEventListener('click',function(e){
+  if(e.target===this) closeModal();
+});
+
+function copyAddress(){
+  navigator.clipboard.writeText('TGyZMzFjBZJkem6QFUeC5GiAaUgJnzcgN8').then(()=>{
+    const btn=document.getElementById('copyBtn');
+    btn.textContent='Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+function handleFile(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size>10*1024*1024){alert('File too large. Max 10MB.');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=function(e){
+    screenshotDataUrl=e.target.result;
+    document.getElementById('previewImg').src=screenshotDataUrl;
+    document.getElementById('uploadBox').style.display='none';
+    document.getElementById('uploadPreview').style.display='block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeFile(){
+  screenshotDataUrl='';
+  document.getElementById('screenshotFile').value='';
+  document.getElementById('previewImg').src='';
+  document.getElementById('uploadBox').style.display='block';
+  document.getElementById('uploadPreview').style.display='none';
+}
+
+function setStep(n){
+  [1,2,3].forEach(i=>{
+    document.getElementById('step'+i).classList.toggle('active', i===n);
+    const ind=document.getElementById('step-ind-'+i);
+    ind.classList.remove('active','done');
+    if(i<n) ind.classList.add('done');
+    else if(i===n) ind.classList.add('active');
+  });
+  document.querySelector('.modal-body').scrollTop=0;
+}
+
+function goToStep2(){
+  const fields=[
+    {id:'firstName',label:'First Name'},
+    {id:'lastName',label:'Last Name'},
+    {id:'userEmail',label:'Email Address'},
+    {id:'userPhone',label:'Phone Number'},
+    {id:'userDob',label:'Date of Birth'},
+    {id:'userCountry',label:'Country'},
+    {id:'userCity',label:'City'},
+    {id:'userAddress',label:'Home Address'},
+    {id:'userZip',label:'Zip / Postal Code'},
+  ];
+  for(const f of fields){
+    if(!document.getElementById(f.id).value.trim()){
+      alert(`Please fill in: ${f.label}`);
+      document.getElementById(f.id).focus();
+      return;
+    }
+  }
+  if(!/\S+@\S+\.\S+/.test(document.getElementById('userEmail').value.trim())){
+    alert('Please enter a valid email address');
+    return;
+  }
+  setStep(2);
+}
+
+function submitForm(){
+  const tx=document.getElementById('txHash').value.trim();
+  if(!tx){alert('Please enter your Transaction ID.');document.getElementById('txHash').focus();return;}
+  if(!screenshotDataUrl){alert('Please upload your payment screenshot. It is required.');return;}
+
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;
+  btn.textContent='Submitting...';
+
+  const first=document.getElementById('firstName').value.trim();
+  const last=document.getElementById('lastName').value.trim();
+  const email=document.getElementById('userEmail').value.trim();
+  const phone=document.getElementById('userPhone').value.trim();
+  const dob=document.getElementById('userDob').value;
+  const country=document.getElementById('userCountry').value;
+  const city=document.getElementById('userCity').value.trim();
+  const address=document.getElementById('userAddress').value.trim();
+  const zip=document.getElementById('userZip').value.trim();
+
+  const msg=`*New GFT Account Request*%0A%0A*Personal Details*%0AName: ${first} ${last}%0ADOB: ${dob}%0AEmail: ${email}%0APhone: ${phone}%0A%0A*Address*%0ACountry: ${country}%0ACity: ${city}%0AAddress: ${address}%0AZip: ${zip}%0A%0A*Payment*%0ATx ID: ${tx}%0AAmount: 5 USDT (TRC20)%0AAccount: $1,000 Funded%0A%0A_(Screenshot attached separately)_`;
+  const waUrl=`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+  setTimeout(()=>{
+    setStep(3);
+    window.open(waUrl,'_blank');
+  },800);
+}
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <a href="#" class="footer-logo">
+      <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/692e4dc2637f15bb6567ebea_Brand%20Nav%20Logo.webp"
+           alt="Goat Funded Traders"
+           onerror="this.style.display='none'">
+    </a>
+    <button class="footer-lang-btn">
+      <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/692e55a42f26cb55c3df7955_United%20States%20of%20America%20(US).webp" alt="EN"> EN ▾
+    </button>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">Trading</div>
+      <a href="#">Home</a><a href="#">How It Works</a><a href="#">Rewards</a>
+      <a href="#">Model</a><a href="#">Blog</a><a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <a href="#">About</a><a href="#">Affiliate</a><a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Socials</div>
+      <a href="#">Instagram</a><a href="#">Discord</a><a href="#">X</a>
+      <a href="#">YouTube</a><a href="#">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Policy</div>
+      <a href="#">Funded Account Disclaimer</a>
+      <a href="#">Refund Policy</a>
+      <a href="#">Complaints Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Payment</div>
+      <div class="footer-pay-col">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ffd2484199754bfe71_Visa%20Logo%20Footer.svg" alt="Visa">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ff74ab8803d5ecf0a2_Paypal%20Logo%20Footer.svg" alt="PayPal">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ffda69af5dd1b79b25_Bitcoin%20Logo%20Footer.svg" alt="Bitcoin">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ff92466dce50f00190_Master%20Card%20Logo%20Footer.svg" alt="Mastercard">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ff4388f056c2a12ed8_American%20Express%20Logo%20Footer.svg" alt="Amex">
+        <img src="https://cdn.prod.website-files.com/692d3a3e37a293dd19f3b43e/6937d0ff4357d0c0496802cc_Skrill%20Logo%20Footer.svg" alt="Skrill">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">©2026 Goat Funded Traders. All rights reserved.</p>
+  </div>
+
+  <p class="disclaimer-text">
+    Goat Funded Traders, a trade name of Wishes Tower International Limited, a company registered in Hong Kong (Company Number 76428795), publish and distribute content that should be regarded as general information only. None of the information provided by the Company or contained herein is intended as investment advice, an offer or solicitation of an offer to buy or sell securities, or a recommendation, endorsement, or sponsorship of any security, company, or fund. The information contained on the Company's websites is provided for informational purposes only and is not intended to be relied upon for making investment decisions. Any use of the information contained on the Company's websites is at your own risk, and the Company assumes no responsibility or liability for any use or misuse of such information. Nothing contained herein constitutes a solicitation or an offer to buy or sell futures, options, or forex. Past performance is not necessarily indicative of future results. The Company is not a financial broker, financial advisor, or financial representative, and does not accept client deposits.<br><br>
+    Goat Funded LTD provides the simulated trading services advertised on this website. Hypothetical performance results have inherent limitations. The accounts utilized for our services are demo accounts. No claim is made that any account will achieve profits or losses comparable to those discussed. Metatrader 5 "MT5" services are not intended for U.S. citizens/residents.
+  </p>
+</footer>
+
+</body>
+</html>
